@@ -31,8 +31,8 @@
     <script type="text/javascript">
         const eyeballs = document.querySelector('.balls');
         window.addEventListener("deviceorientation", function(e) {
-            const x = e.beta ? e.beta * (Math.PI / 180)*30 : 0;
-            const y = e.gamma ? e.gamma * (Math.PI / 180)*30 : 0;
+            const x = e.beta ? e.beta * (Math.PI / 90) : 0;
+            const y = e.gamma ? e.gamma * (Math.PI / 90) : 0;
             eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`
         });
     </script>
