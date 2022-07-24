@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilt guy</title>
+</head>
+<body>
+    <div class="head">
+        <div class="title">Let's play Tilt Guy.</div>
+        <section>
+            <div class="char">Choose Character</div>
+            <select class="selectchar">
+                <option value=".charlie">Charlie</option>
+                <option value=".robo">Robo</option>
+                <option value=".ruby">Ruby</option>
+                <option value=".hank">Hank</option>
+                <option value=".norman">Norman</option>
+            </select>
+        </section>
+    </div>
+    <div class="main">
+        <div class="charlie">
+            <img src="monster.png" alt="">
+            <div class="eye">
+                <div class="balls"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const eyeballs = document.querySelector('.balls');
+        window.addEventListener("deviceorientation", function(e) {
+            const x = e.beta ? e.beta * (Math.PI / 180)*20 : 0;
+            const y = e.gamma ? e.gamma * (Math.PI / 180)*20 : 0;
+            eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`
+        });
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body
+        {
+            display: flex;
+            min-height: 100vh;
+            min-width: 100vw;
+            justify-content: center;
+            align-items: center;
+            background: rgb(255, 52, 52);
+        }
+        .head{
+            position: fixed;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100vw;
+            height: 50px;
+            background: rgb(255, 201, 23);
+            z-index: 10;
+            box-shadow: 0 0 20px 8px #000;
+        }
+        .head .title
+        {
+            position: relative;
+            font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin: 20px;
+            padding: 8px; 
+            /* background: #000; */
+            font-size: 30px;
+            color: #008523;
+        }
+        .head section
+        {
+            position: absolute;
+            right: 0;
+            margin: 0 20px;
+            padding: 10px;
+
+        }
+        section .char
+        {
+            color: #008523;
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .selectchar
+        {
+            position: relative;
+            padding: 5px;
+            border: none;
+            border-right: 10px solid #fff;
+            outline: none;
+            width: 200px;
+            border-radius: 4px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            font-weight: 700;
+        }
+        .selectchar option
+        {
+            font-size: 15px;
+            font-weight: 600;
+            white-space: nowrap;
+            user-select: none;
+            color: black;
+        }
+        .main
+        {
+            width: 80%;
+            height: 80%;
+            top: 50px;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #d1cfc3;
+        }
+        .charlie
+        {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .charlie img
+        {
+            position: absolute;
+        }
+        .eye
+        {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 170px;
+            height: 170px;
+            transform: translateY(-77px);
+            margin: 0 20px;
+            background-color: #fff;  
+            border-radius: 50%;   
+            overflow: hidden;
+        }
+        .balls
+        {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: #3778c6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .balls::before
+        {
+            content: '';
+            position: inherit;
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: #2c4359;
+        }
+        .balls::after
+        {
+            content: '';
+            position: inherit;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #fff;
+            transform: translate(21px,-21px);
+        }
+    </style>
+</body>
+</html>
