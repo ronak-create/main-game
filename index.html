@@ -9,7 +9,7 @@
 <body>
     <div class="head">
         <div class="title">Let's play Tilt Guy.</div>
-        <section>
+<!--         <section>
             <div class="char">Choose Character</div>
             <select class="selectchar">
                 <option value=".charlie">Charlie</option>
@@ -18,12 +18,13 @@
                 <option value=".hank">Hank</option>
                 <option value=".norman">Norman</option>
             </select>
-        </section>
+        </section> -->
     </div>
     <div class="main">
-         <div class="orientationcheck">
+        <div class="orientationcheck">
             <h1>Orientation Check</h1>
             <div class="light"></div>
+        </div>
         <div class="charlie">
             <img src="monster.png" alt="">
             <div class="eye">
@@ -37,7 +38,7 @@
         window.addEventListener("deviceorientation", function(e) {
             const x = e.beta ? e.beta * (Math.PI / 90) : 0;
             const y = e.gamma ? e.gamma * (Math.PI / 90) : 0;
-            eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`;
+            eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`
             if (Math.round(e.gamma)>=90 || Math.round(e.gamma)<=-90 || Math.round(e.beta)>=180 || Math.round(e.beta)<=-180){
                 lightcheck.style.boxShadow = "0 0 10px 5px red";
                 lightcheck.style.background = "red";
@@ -47,6 +48,7 @@
                 lightcheck.style.background = "green";
             }
         });
+
     </script>
     <style>
         *{
@@ -74,17 +76,17 @@
             z-index: 10;
             box-shadow: 0 0 20px 8px #000;
         }
+        
         .head .title
         {
             position: relative;
             font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             margin: 20px;
             padding: 8px; 
-            /* background: #000; */
             font-size: 30px;
             color: #008523;
         }
-        .head section
+/*         .head section
         {
             position: absolute;
             right: 0;
@@ -117,7 +119,7 @@
             white-space: nowrap;
             user-select: none;
             color: black;
-        }
+        } */
         .main
         {
             width: 80%;
@@ -133,6 +135,7 @@
         {
             position: absolute;
             color: #000;
+            transform: translate(-200%,-400%);
             font-size: 15px;
             font-family: Arial, Helvetica, sans-serif;
             background: #fff;
@@ -209,6 +212,46 @@
             border-radius: 50%;
             background: #fff;
             transform: translate(21px,-21px);
+        }
+        @media only screen and (max-width: 600px){
+            .head .title
+            {
+                font-size: 15px;
+                margin: 10px;
+            }
+/*             .head section
+            {
+                padding: 0;
+            }
+            section .char{
+                font-size: 10px;
+            }
+            .selectchar
+            {
+                padding: 5px;
+                border-right: 10px solid #fff;
+                width: 100px;
+                font-weight: 500;
+            }
+            .selectchar option
+            {
+                font-size: 8px;
+                font-weight: 500;
+                color: black;
+            } */
+            .main
+            {
+                width: 70%;
+                height: 85%;
+                top: 50px;
+            }
+            .orientationcheck
+            {
+                transform: translate(-5%,-300px);
+                padding: 5px;
+                border-radius: 10px;
+                font-size: 10px;
+            }
         }
     </style>
 </body>
