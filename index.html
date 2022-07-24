@@ -21,6 +21,9 @@
         </section>
     </div>
     <div class="main">
+         <div class="orientationcheck">
+            <h1>Orientation Check</h1>
+            <div class="light"></div>
         <div class="charlie">
             <img src="monster.png" alt="">
             <div class="eye">
@@ -30,10 +33,19 @@
     </div>
     <script type="text/javascript">
         const eyeballs = document.querySelector('.balls');
+        const lightcheck = document.querySelector('.light');
         window.addEventListener("deviceorientation", function(e) {
             const x = e.beta ? e.beta * (Math.PI / 90) : 0;
             const y = e.gamma ? e.gamma * (Math.PI / 90) : 0;
-            eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`
+            eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`;
+            if (Math.round(e.gamma)>=90 || Math.round(e.gamma)<=-90 || Math.round(e.beta)>=180 || Math.round(e.beta)<=-180){
+                lightcheck.style.boxShadow = "0 0 10px 5px red";
+                lightcheck.style.background = "red";
+            }
+            else{
+                lightcheck.style.boxShadow = "0 0 10px 5px green";
+                lightcheck.style.background = "green";
+            }
         });
     </script>
     <style>
@@ -116,6 +128,32 @@
             justify-content: center;
             align-items: center;
             background: #d1cfc3;
+        }
+        .orientationcheck
+        {
+            position: absolute;
+            color: #000;
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            font-stretch: condensed;
+            z-index: 20;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .light
+        {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 20;
+            background: green;
+            box-shadow: 0 0 10px 5px green;
+            border-radius: 50%;
+            right: -20px;
         }
         .charlie
         {
