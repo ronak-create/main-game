@@ -36,17 +36,9 @@
         const eyeballs = document.querySelector('.balls');
         const lightcheck = document.querySelector('.light');
         window.addEventListener("deviceorientation", function(e) {
-            const x = e.beta ? e.beta * (Math.PI / 180) : 0;
-            const y = e.gamma ? e.gamma * (Math.PI / 180) : 0;
-            eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`
-            if (Math.round(e.gamma)>=90 || Math.round(e.gamma)<=-90 || Math.round(e.beta)>=180 || Math.round(e.beta)<=-180){
-                lightcheck.style.boxShadow = "0 0 10px 5px red";
-                lightcheck.style.background = "red";
-            };
-            else{
-                lightcheck.style.boxShadow = "0 0 10px 5px green";
-                lightcheck.style.background = "green";
-            };
+            const x = e.beta ? e.beta * (Math.PI / 90)*20 : 0;
+            const y = e.gamma ? e.gamma * (Math.PI / 90)*20 : 0;
+            eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`;
         });
 
     </script>
