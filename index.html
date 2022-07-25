@@ -36,8 +36,8 @@
         const eyeballs = document.querySelector('.balls');
         const lightcheck = document.querySelector('.light');
         window.addEventListener("deviceorientation", function(e) {
-            const x = e.beta ? e.beta * (Math.PI / 90)*20 : 0;
-            const y = e.gamma ? e.gamma * (Math.PI / 90)*20 : 0;
+            const x = e.beta ? e.beta * (Math.PI / 180)*20 : 0;
+            const y = e.gamma ? e.gamma * (Math.PI / 180)*20 : 0;
             eyeballs.style.transform = `translateY(${x}px) translateX(${y}px)`;
         });
 
@@ -231,19 +231,6 @@
                 font-weight: 500;
                 color: black;
             } */
-            .main
-            {
-                width: 70%;
-                height: 85%;
-                top: 50px;
-            }
-            .orientationcheck
-            {
-                transform: translate(-5%,-300px);
-                padding: 5px;
-                border-radius: 10px;
-                font-size: 10px;
-            }
         }
     </style>
 </body>
